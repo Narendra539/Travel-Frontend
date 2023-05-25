@@ -11,10 +11,10 @@ onMounted(async () => {
         <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
             <div class="carousel-item active">
-            <img src="home2.png" class="d-block w-100" alt="...">
+            <img src="/home2.png" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-            <img src="home3.png" class="d-block w-100" alt="...">
+            <img src="/home3.png" class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -64,7 +64,7 @@ onMounted(async () => {
                     </div>
                 </div>
             </div>
-            <img class="col-xl-6 from-to-image" src="home2.png"/>
+            <img class="col-xl-6 from-to-image" src="/home2.png"/>
         </div>
         </div><br/>
         
@@ -72,7 +72,7 @@ onMounted(async () => {
         <h2> Most Visited Places </h2>
         <div class="card-group">
         <div class="card">
-            <img class="card-img-top" src="place1.png" alt="Card image cap">
+            <img class="card-img-top" src="/place1.png" alt="Card image cap">
             <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -82,7 +82,7 @@ onMounted(async () => {
             </div>
         </div>
         <div class="card">
-            <img class="card-img-top" src="place2.png" alt="Card image cap">
+            <img class="card-img-top" src="/place2.png" alt="Card image cap">
             <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -92,7 +92,7 @@ onMounted(async () => {
             </div>
         </div>
         <div class="card">
-            <img class="card-img-top" src="place3.png" alt="Card image cap">
+            <img class="card-img-top" src="/place3.png" alt="Card image cap">
             <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
@@ -108,21 +108,21 @@ onMounted(async () => {
         <h2> Couple Travel </h2>
         <div class="card-group">
         <div class="card">
-            <img class="card-img-top" src="place1.png" alt="Card image cap">
+            <img class="card-img-top" src="/place1.png" alt="Card image cap">
             <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
             </div>
         </div>
         <div class="card">
-            <img class="card-img-top" src="place2.png" alt="Card image cap">
+            <img class="card-img-top" src="/place2.png" alt="Card image cap">
             <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
             </div>
         </div>
         <div class="card">
-            <img class="card-img-top" src="place3.png" alt="Card image cap">
+            <img class="card-img-top" src="/place3.png" alt="Card image cap">
             <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
