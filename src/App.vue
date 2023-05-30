@@ -1,0 +1,18 @@
+<script setup>
+import MenuBar from "./components/MenuBar.vue";
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/js/bootstrap.js'
+</script>
+
+<template>
+  <v-app :style="{ background: '#F4F4F4' }">
+    <MenuBar :key="$route.fullPath" />
+    <v-main>
+      <router-view />
+    </v-main>
+  </v-app>
+</template>
+
+<style>
+
+</style>
