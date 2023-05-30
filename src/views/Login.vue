@@ -20,13 +20,10 @@ const user = ref({
 
 onMounted(async () => {
   if (localStorage.getItem("user") !== null) {
-    router.push({ name: "recipes" });
+    router.push({ name: "home" });
   }
 });
 
-function navigateToRecipes() {
-  router.push({ name: "recipes" });
-}
 
 async function createAccount() {
   await UserServices.addUser(user.value)
