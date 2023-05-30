@@ -106,7 +106,7 @@ async function getGroup3() {
                     </div>
                 </div>
             </div>
-            <img class="col-xl-6 from-to-image" src="home2.png"/>
+            <img class="col-xl-6 from-to-image" src="/home2.png"/>
         </div>
         </div><br/>
         
