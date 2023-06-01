@@ -9,10 +9,7 @@ import { ref } from "vue";
 
 const mostVisitedPlaces = ref([]);
 const famousHotels = ref([]);
-const start = ref('');
-const end = ref('');
-const from = ref('');
-const to = ref('');
+
 const spinner = ref(true);
 
 onMounted(async () => {
@@ -51,10 +48,6 @@ async function getGroup3() {
     });
 }
 
-const searchPlan = () => {
-  return '/plans?from='+from.value.toString()+'&to='+to.value.toString()+'&start='+startDate.value.toString()+'&end='+endDate.value.toString()
-}
-
 </script>
 <template>
         <div id="carouselExample" class="carousel slide">
@@ -79,7 +72,7 @@ const searchPlan = () => {
         <div class="row justify-content-center">
             <div class="col-xl-6 from-to-search">
                 <div class="text-center text-white">
-                    <h2 class="mb-5 title">Life is short, and the world is wide.</h2>
+                    <h2 class="mb-5 title">Life Is Short And The World Is Wide.</h2>
                     <div class="container" style="padding:10px;">
                         <div class="row">
                         <div class="col-md-6">
@@ -106,7 +99,7 @@ const searchPlan = () => {
                         </div>
                         <div class="col-md-12 search-button">
                             <div class="form-group col-md-6">
-                            <a type="submit" class="btn" :href="searchPlan()">Search Now</a>
+                            <button type="submit" class="btn">Search Itinerary</button>
                             </div>
                         </div>
                         </div>
