@@ -1,6 +1,6 @@
 import axios from "axios";
 
-var baseurl = "http://ec2-3-145-208-150.us-east-2.compute.amazonaws.com:3200/";
+var baseurl = "http://ec2-3-17-70-175.us-east-2.compute.amazonaws.com:3200/";
 // if (process.env.NODE_ENV === "development") {
 //   baseurl = "http://localhost/recipeapi/";
 // } else {
