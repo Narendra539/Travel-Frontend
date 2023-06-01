@@ -30,7 +30,7 @@ function logout() {
 }
 
 const searchPlan = () => {
-  return '/plans?key='+plan
+  return '/plans?key='+plan.value
 }
 </script>
 
