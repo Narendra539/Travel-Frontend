@@ -60,7 +60,7 @@ const searchPlan = () => {
         <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
             <div class="carousel-item active">
-            <img src="home2.png" class="d-block w-100" alt="...">
+            <img src="/home2.png" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
             <img src="home3.png" class="d-block w-100" alt="...">
