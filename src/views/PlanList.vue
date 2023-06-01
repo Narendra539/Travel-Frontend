@@ -1,171 +1,88 @@
 <script setup>
 import { onMounted } from "vue";
 import { useRouter } from "vue-router";
-import { getImageUrl } from "../global.js";
-import PlaceServices from "../services/PlaceServices.js";
-import HotelServices from "../services/HotelServices.js";
+import PlanServices from "../services/PlanServices.js";
 import { ref } from "vue";
+import Spinner from "../components/Spinner.vue";
+import { getImageUrl } from "../global.js";
 
 
-const mostVisitedPlaces = ref([]);
-const famousHotels = ref([]);
-
+const plans = ref([]);
 const spinner = ref(true);
+const key = ref(router.currentRoute.value.query.key);
+const start = ref(router.currentRoute.value.query.start);
+const end = ref(router.currentRoute.value.query.end);
+const from = ref(router.currentRoute.value.query.from);
+const to = ref(router.currentRoute.value.query.to);
 
 onMounted(async () => {
-    await getMostVisitedPlaces();
-    await getMostVisitedHotels();
-    spinner.value = false;   
+  await getPlans();
+  spinner.value = false;
 });
 
-async function getMostVisitedPlaces() {
-  await PlaceServices.getMostVisitedPlaces()
+async function getPlans() {
+  await PlanServices.getPlans({ key:key.value,from:from.value,to:to.value,start:start.value,end:end.value})
     .then((response) => {
-      mostVisitedPlaces.value = response.data;
+      plans.value = response.data;
     })
     .catch((error) => {
       console.log(error);
     });
 }
 
-async function getMostVisitedHotels() {
-  await HotelServices.getFamousHotels()
-    .then((response) => {
-      famousHotels.value = response.data;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+const getPlanUrl = (id)=>{
+    return "/plan/"+id
 }
 
-async function getGroup3() {
-  await PlaceServices.getPlaces()
-    .then((response) => {
-      places.value = response.data;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
 
 </script>
+
 <template>
-        <div id="carouselExample" class="carousel slide">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-            <img src="home2.png" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-            <img src="home3.png" class="d-block w-100" alt="...">
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-        </div><br/>
-        <div class="container from-to">
-        <div class="row justify-content-center">
-            <div class="col-xl-6 from-to-search">
-                <div class="text-center text-white">
-                    <h2 class="mb-5 title">Life Is Short And The World Is Wide.</h2>
-                    <div class="container" style="padding:10px;">
-                        <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                            <input type="text" class="form-control" id="from" placeholder="From">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                            <input type="text" class="form-control" id="to" placeholder="To">
-                            </div>
-                        </div>
-                        </div><br/>
-                        <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                            <input type="date" class="form-control" id="departure">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                            <input type="date" class="form-control" id="return">
-                            </div>
-                        </div>
-                        <div class="col-md-12 search-button">
-                            <div class="form-group col-md-6">
-                            <button type="submit" class="btn">Search Itinerary</button>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
+  <v-container>
+      <div class="container" style="margin-top:20px">
+         <div style="display: flex; justify-content: center;">
+            <h3>Plans</h3>
+        </div> <br/>
+            <Spinner v-if="spinner" />
+            <div class="row" v-else>
+                <div class="card card-item" v-for="plan in plans" :key="plan.id">
+                <img :src="getImageUrl(plan.image_url)" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">{{ plan.description }}</p>
+                </div>
                 </div>
             </div>
-            <img class="col-xl-6 from-to-image" src="home2.png"/>
-        </div>
-        </div><br/>
-        
-    <div class="container">
-        <h2> Most Visited Places </h2>
-        <div class="card-group">
-        <div class="card" v-for="item in mostVisitedPlaces.slice(0,3)" :key="item.id">
-            <img class="card-img-top" :src="getImageUrl(item.image_url)" alt="Card image cap">
-            <div class="card-body">
-            <h5 class="card-title">{{ item.title }}</h5>
-            <p class="card-text">{{ item.description }}</p>
-            </div>
-            <div class="card-footer">
-            <small class="text-muted">Last updated {{ item.updatedAt }}</small>
-            </div>
-        </div>
-        </div>
-    </div><br/><br/>
-
-       <div class="container">
-        <h2> Famous Hotels </h2>
-        <div class="card-group">
-        <div class="card" v-for="item in famousHotels.slice(0,3)" :key="item.id">
-            <img class="card-img-top" :src="getImageUrl(item.image_url)" alt="Card image cap">
-            <div class="card-body">
-            <h5 class="card-title">{{ item.title }}</h5>
-            <p class="card-text">{{ item.description }}</p>
-            </div>
-            <div class="card-footer">
-            <small class="text-muted">Last updated {{ item.updatedAt }}</small>
-            </div>
-        </div>
-        </div>
-    </div><br/><br/>
-
+      </div><br/>
+  </v-container>
 </template>
 
 <style scoped>
-
-.btn {
-  color:white;margin-top:25px;width:100%;background-color:#80162B;
-}
-.title {
-    color: #555;
-}
-.search-button {
+.centered-container {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
-.from-to {
-    background-color: white;
-    /* padding: 50px; */
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+.card-img {
+    border-radius: 7px;
+    margin-top: 10px;
 }
-.from-to-image {
-    margin-right: -23px;
+.card-title {
+    margin-top: 10px;
 }
-.from-to-search {
-    padding: 50px;
+a:hover {
+    color:black;
+}
+.plan {
+    cursor: pointer;
+    margin-top: 20px;
+}
+.btn {
+    color: white;
+    background-color: #FE7A15;
+}
+.card-item {
+    margin-left:20px;
+    margin-top:30px;
+    width: 22rem;
 }
 </style>
