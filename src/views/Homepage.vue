@@ -60,10 +60,10 @@ const searchPlan = () => {
         <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
             <div class="carousel-item active">
-            <img src="home2.png" class="d-block w-100" alt="...">
+            <img src="/home2.png" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-            <img src="home3.png" class="d-block w-100" alt="...">
+            <img src="/home3.png" class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -113,7 +113,7 @@ const searchPlan = () => {
                     </div>
                 </div>
             </div>
-            <img class="col-xl-6 from-to-image" src="home2.png"/>
+            <img class="col-xl-6 from-to-image" src="/home2.png"/>
         </div>
         </div><br/>
         
