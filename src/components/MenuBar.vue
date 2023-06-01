@@ -44,13 +44,13 @@ const searchPlan = () => {
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="./">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/plans">Plans</a>
+        <a class="nav-link" href="./plans">Plans</a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" href="/places">Places</a>
+        <a class="nav-link" href="./places">Places</a>
       </li>
       <li class="nav-item" v-if="user !== null">
         <a class="nav-link" href="/bookings">Bookings</a>
@@ -63,7 +63,7 @@ const searchPlan = () => {
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" v-model="plan">
       <a class="btn btn-search my-2 my-sm-0" type="submit">Search</a>
     </form>
-    <a class="nav-link" href="/login" style="margin-right:20px" v-if="user === null">Login</a>
+    <a class="nav-link" href="./login" style="margin-right:20px" v-if="user === null">Login</a>
          <v-menu v-if="user !== null" min-width="200px" rounded>
         <template v-slot:activator="{ props }">
           <v-btn icon v-bind="props">
