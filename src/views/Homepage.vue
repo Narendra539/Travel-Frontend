@@ -63,7 +63,7 @@ const searchPlan = () => {
             <img src="/home2.png" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-            <img src="home3.png" class="d-block w-100" alt="...">
+            <img src="/home3.png" class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
