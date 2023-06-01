@@ -47,7 +47,7 @@ const getPlanUrl = (id)=>{
             <Spinner v-if="spinner" />
             <div class="row" v-else>
                 <div class="card card-item" v-for="plan in plans" :key="plan.id">
-                <img :src="getImageUrl(plan.image_url)" class="card-img-top" alt="...">
+                <img :src="getImageUrl(plan.image_url)" class="card-img-top" alt="..."/>
                 <div class="card-body">
                     <p class="card-text">{{ plan.description }}</p>
                 </div>
