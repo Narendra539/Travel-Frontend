@@ -1,19 +1,21 @@
 import apiClient from "./services";
 
 export default {
-  getPlans() {
-    return apiClient.get("itenararies");
+  getPlans(queryParams) {
+    return apiClient.get("plans", {
+      params: queryParams,
+    });
   },
   getPlan(id) {
-    return apiClient.get("itenararies/" + id);
+    return apiClient.get("plans/" + id);
   },
   addPlan(plan) {
-    return apiClient.post("itenararies", plan);
+    return apiClient.post("plans", plan);
   },
   updatePlan(plan) {
-    return apiClient.put("itenararies/" + plan.id, plan);
+    return apiClient.put("plans/" + plan.id, plan);
   },
   deletePlan(planId) {
-    return apiClient.delete("itenararies/" + planId);
+    return apiClient.delete("plans/" + planId);
   },
 };

@@ -9,6 +9,11 @@ import { getImageUrl } from "../global.js";
 
 const plans = ref([]);
 const spinner = ref(true);
+const key = ref(router.currentRoute.value.query.key);
+const start = ref(router.currentRoute.value.query.start);
+const end = ref(router.currentRoute.value.query.end);
+const from = ref(router.currentRoute.value.query.from);
+const to = ref(router.currentRoute.value.query.to);
 
 onMounted(async () => {
   await getPlans();
@@ -16,7 +21,7 @@ onMounted(async () => {
 });
 
 async function getPlans() {
-  await PlanServices.getPlans()
+  await PlanServices.getPlans({ key:key.value,from:from.value,to:to.value,start:start.value,end:end.value})
     .then((response) => {
       plans.value = response.data;
     })

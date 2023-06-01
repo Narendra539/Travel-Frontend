@@ -9,7 +9,10 @@ import { ref } from "vue";
 
 const mostVisitedPlaces = ref([]);
 const famousHotels = ref([]);
-
+const start = ref('');
+const end = ref('');
+const from = ref('');
+const to = ref('');
 const spinner = ref(true);
 
 onMounted(async () => {
@@ -48,15 +51,19 @@ async function getGroup3() {
     });
 }
 
+const searchPlan = () => {
+  return '/plans?from='+from.value.toString()+'&to='+to.value.toString()+'&start='+startDate.value.toString()+'&end='+endDate.value.toString()
+}
+
 </script>
 <template>
         <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
             <div class="carousel-item active">
-            <img src="/home2.png" class="d-block w-100" alt="...">
+            <img src="home2.png" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-            <img src="/home3.png" class="d-block w-100" alt="...">
+            <img src="home3.png" class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -72,7 +79,7 @@ async function getGroup3() {
         <div class="row justify-content-center">
             <div class="col-xl-6 from-to-search">
                 <div class="text-center text-white">
-                    <h2 class="mb-5 title">Life Is Short And The World Is Wide.</h2>
+                    <h2 class="mb-5 title">Life is short, and the world is wide.</h2>
                     <div class="container" style="padding:10px;">
                         <div class="row">
                         <div class="col-md-6">
@@ -99,14 +106,14 @@ async function getGroup3() {
                         </div>
                         <div class="col-md-12 search-button">
                             <div class="form-group col-md-6">
-                            <button type="submit" class="btn">Search Itinerary</button>
+                            <a type="submit" class="btn" :href="searchPlan()">Search Now</a>
                             </div>
                         </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <img class="col-xl-6 from-to-image" src="/home2.png"/>
+            <img class="col-xl-6 from-to-image" src="home2.png"/>
         </div>
         </div><br/>
         
