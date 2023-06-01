@@ -7,6 +7,7 @@ import Spinner from "../components/Spinner.vue";
 import { getImageUrl } from "../global.js";
 
 
+const router = useRouter();
 const plans = ref([]);
 const spinner = ref(true);
 const key = ref(router.currentRoute.value.query.key);
