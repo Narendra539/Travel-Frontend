@@ -5,3 +5,7 @@ export const getImageUrl = (path) => {
 export const getPlanUrl = (id) => {
     return "/travel-frontend/plans/"+id
 }
+
+export const getPlanEditUrl = (id) => {
+    return "/travel-frontend/editplan/"+id
+}
