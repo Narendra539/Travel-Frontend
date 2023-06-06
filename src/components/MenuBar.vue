@@ -36,7 +36,7 @@ const searchPlan = () => {
 
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light header" style="background-color: #f2f2f2;">
-  <b><a class="navbar-brand" href="./">{{ title }}</a></b>
+  <b><a class="navbar-brand" href="/travel-frontend/">{{ title }}</a></b>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -44,22 +44,22 @@ const searchPlan = () => {
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="./">Home</a>
+        <a class="nav-link" href="/travel-frontend/">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./plans">Itineraries</a>
+        <a class="nav-link" href="/travel-frontend/plans">Itineraries</a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" href="./places">Places</a>
+        <a class="nav-link" href="/travel-frontend/places">Places</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./hotels">Hotels</a>
+        <a class="nav-link" href="/travel-frontend/hotels">Hotels</a>
       </li>
       <li class="nav-item" v-if="user !== null">
-        <a class="nav-link" href="/bookings">Bookings</a>
+        <a class="nav-link" href="/travel-frontend/bookings">Bookings</a>
       </li>
          <li class="nav-item" v-if="user !== null">
-        <a class="nav-link" href="/addplan">Add Itinerary</a>
+        <a class="nav-link" href="/travel-frontend/addplan">Add Itinerary</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0 search">
