@@ -43,6 +43,11 @@ const router = createRouter({
       name: "addPlan",
       component: () => import("./views/AddPlan.vue"),
     },
+    {
+      path: "/editplan/:id",
+      name: "editPlan",
+      component: () => import("./views/EditPlan.vue"),
+    },
   ],
 });
 
