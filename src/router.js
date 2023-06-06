@@ -23,6 +23,21 @@ const router = createRouter({
       name: "plans",
       component: () => import("./views/PlanList.vue"),
     },
+    {
+      path: "/hotels",
+      name: "hotels",
+      component: () => import("./views/HotelList.vue"),
+    },
+    {
+      path: "/plans/:id",
+      name: "plan",
+      component: () => import("./views/Plan.vue"),
+    },
+    {
+      path: "/bookings",
+      name: "booking",
+      component: () => import("./views/Booking.vue"),
+    },
   ],
 });
 
