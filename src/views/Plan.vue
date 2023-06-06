@@ -26,7 +26,7 @@ onMounted(async () => {
 });
 async function bookPlanNow() {
     spinner.value = true;
-    await BookingServices.addOrder({
+    await BookingServices.addBooking({
         user_id: user.value.id,
         itenarary_id: planId,
     })
@@ -34,7 +34,7 @@ async function bookPlanNow() {
         spinner.value = false;
         snackbar.value.value = true;
         snackbar.value.color = "green";
-        snackbar.value.text = "Order place successfully!";
+        snackbar.value.text = "Booking is done successfully!";
     })
     .catch((error) => {
         console.log(error);
@@ -93,12 +93,7 @@ function closeSnackBar() {
                     <p> {{ day.description }} </p>
                 </div>
             </div>
-            <div class="edit-delete" v-if="user != null">
-                <a type="button" class="btn btn-warning button" :href="deletePlan()">Edit</a>
-                <a type="button" class="btn btn-primary button" :href="deletePlan()">
-                    Delete
-                </a>
-            </div>
+
       </div>
        <v-snackbar v-model="snackbar.value" rounded="pill">
         {{ snackbar.text }}
@@ -142,5 +137,12 @@ function closeSnackBar() {
 }
 .day {
   width: 100%;
+}
+.btn {
+    color: white;
+    background-color: #80162B;
+}
+.book-button {
+    margin-top: 20px;
 }
 </style>
