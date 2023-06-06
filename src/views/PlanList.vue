@@ -37,7 +37,7 @@ async function getPlans() {
   <v-container>
       <div class="container" style="margin-top:20px">
          <div style="display: flex; justify-content: center;">
-            <h3>Plans</h3>
+            <h3>Itineraries</h3>
         </div> <br/>
             <Spinner v-if="spinner" />
             <div class="row" v-else>
@@ -45,7 +45,8 @@ async function getPlans() {
                 <a :href="getPlanUrl(plan.id)">
                     <img :src="getImageUrl(plan.image_url)" class="card-img-top" alt="..."/>
                     <div class="card-body">
-                        <p class="card-text">{{ plan.description }}</p>
+                    <strong> {{ plan.title }} </strong><br/>
+                    {{ plan.description.slice(0,100) }}                
                     </div>
                 </a>
                 </div>

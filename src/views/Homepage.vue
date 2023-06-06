@@ -108,9 +108,6 @@ const searchPlan = () => {
             <h5 class="card-title">{{ item.title }}</h5>
             <p class="card-text">{{ item.description.slice(0,100) }}..</p>
             </div>
-            <div class="card-footer">
-            <small class="text-muted">Last updated on {{ item.updatedAt.slice(0,10) }}</small>
-            </div>
         </div>
         </div>
     </div><br/><br/>
@@ -123,9 +120,6 @@ const searchPlan = () => {
             <div class="card-body">
             <h5 class="card-title">{{ item.name }}</h5>
             <p class="card-text">{{ item.location }}</p>
-            </div>
-            <div class="card-footer">
-            <small class="text-muted">Last updated on {{ item.updatedAt.slice(0,10) }}</small>
             </div>
         </div>
         </div>
@@ -156,5 +150,12 @@ const searchPlan = () => {
 }
 .from-to-search {
     padding: 50px;
+}
+.card-img-top {
+  max-height: 300px ;
+  max-width: 400px;
+}
+.card {
+  max-width: 400px;
 }
 </style>
