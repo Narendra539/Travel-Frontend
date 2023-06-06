@@ -4,7 +4,7 @@ import { useRouter } from "vue-router";
 import PlanServices from "../services/PlanServices.js";
 import { ref } from "vue";
 import Spinner from "../components/Spinner.vue";
-import { getImageUrl } from "../global.js";
+import { getImageUrl,getPlanUrl } from "../global.js";
 
 
 const router = useRouter();
@@ -31,11 +31,6 @@ async function getPlans() {
     });
 }
 
-const getPlanUrl = (id)=>{
-    return "/plan/"+id
-}
-
-
 </script>
 
 <template>
@@ -47,10 +42,12 @@ const getPlanUrl = (id)=>{
             <Spinner v-if="spinner" />
             <div class="row" v-else>
                 <div class="card card-item" v-for="plan in plans" :key="plan.id">
-                <img :src="getImageUrl(plan.image_url)" class="card-img-top" alt="..."/>
-                <div class="card-body">
-                    <p class="card-text">{{ plan.description }}</p>
-                </div>
+                <a :href="getPlanUrl(plan.id)">
+                    <img :src="getImageUrl(plan.image_url)" class="card-img-top" alt="..."/>
+                    <div class="card-body">
+                        <p class="card-text">{{ plan.description }}</p>
+                    </div>
+                </a>
                 </div>
             </div>
       </div><br/>
@@ -72,6 +69,10 @@ const getPlanUrl = (id)=>{
 }
 a:hover {
     color:black;
+}
+a {
+    text-decoration: none;
+    color: black;
 }
 .plan {
     cursor: pointer;

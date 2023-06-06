@@ -57,24 +57,6 @@ const searchPlan = () => {
 
 </script>
 <template>
-        <div id="carouselExample" class="carousel slide">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-            <img src="/home2.png" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-            <img src="/home3.png" class="d-block w-100" alt="...">
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-        </div><br/>
         <div class="container from-to">
         <div class="row justify-content-center">
             <div class="col-xl-6 from-to-search">
@@ -84,24 +66,24 @@ const searchPlan = () => {
                         <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                            <input type="text" class="form-control" id="from" placeholder="From">
+                            <input type="text" class="form-control" id="from" placeholder="From" v-model="from">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                            <input type="text" class="form-control" id="to" placeholder="To">
+                            <input type="text" class="form-control" id="to" placeholder="To" v-model="to">
                             </div>
                         </div>
                         </div><br/>
                         <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                            <input type="date" class="form-control" id="departure">
+                            <input type="date" class="form-control" id="departure" v-model="start">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                            <input type="date" class="form-control" id="return">
+                            <input type="date" class="form-control" id="return" v-model="end">
                             </div>
                         </div>
                         <div class="col-md-12 search-button">
@@ -124,10 +106,10 @@ const searchPlan = () => {
             <img class="card-img-top" :src="getImageUrl(item.image_url)" alt="Card image cap">
             <div class="card-body">
             <h5 class="card-title">{{ item.title }}</h5>
-            <p class="card-text">{{ item.description }}</p>
+            <p class="card-text">{{ item.description.slice(0,100) }}..</p>
             </div>
             <div class="card-footer">
-            <small class="text-muted">Last updated {{ item.updatedAt }}</small>
+            <small class="text-muted">Last updated on {{ item.updatedAt.slice(0,10) }}</small>
             </div>
         </div>
         </div>
@@ -139,11 +121,11 @@ const searchPlan = () => {
         <div class="card" v-for="item in famousHotels.slice(0,3)" :key="item.id">
             <img class="card-img-top" :src="getImageUrl(item.image_url)" alt="Card image cap">
             <div class="card-body">
-            <h5 class="card-title">{{ item.title }}</h5>
-            <p class="card-text">{{ item.description }}</p>
+            <h5 class="card-title">{{ item.name }}</h5>
+            <p class="card-text">{{ item.location }}</p>
             </div>
             <div class="card-footer">
-            <small class="text-muted">Last updated {{ item.updatedAt }}</small>
+            <small class="text-muted">Last updated on {{ item.updatedAt.slice(0,10) }}</small>
             </div>
         </div>
         </div>

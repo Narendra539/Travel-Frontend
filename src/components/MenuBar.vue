@@ -36,7 +36,7 @@ const searchPlan = () => {
 
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/">Itenary</a>
+  <a class="navbar-brand" href="./">Itenary</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -52,15 +52,15 @@ const searchPlan = () => {
        <li class="nav-item">
         <a class="nav-link" href="./places">Places</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./hotels">Hotels</a>
+      </li>
       <li class="nav-item" v-if="user !== null">
         <a class="nav-link" href="/bookings">Bookings</a>
       </li>
-       <!-- <li class="nav-item">
-        <a class="nav-link" href="/login">Login</a>
-      </li> -->
     </ul>
     <form class="form-inline my-2 my-lg-0 search">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" v-model="plan">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search Plan here" aria-label="Search" v-model="plan">
       <a class="btn btn-search my-2 my-sm-0" type="submit" :href="searchPlan()">Search</a>
     </form>
     <a class="nav-link" href="./login" style="margin-right:20px" v-if="user === null">Login</a>
@@ -109,6 +109,6 @@ const searchPlan = () => {
   color: white;
 }
 .navbar {
-  background-color: white;
+  background-color: black;
 }
 </style>
