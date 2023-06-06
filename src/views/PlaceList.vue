@@ -59,7 +59,10 @@ watch(search, (updatedValue) => {
             <div class="card card-item" v-for="place in places" :key="place.id">
             <img :src="getImageUrl(place.image_url)" class="card-img-top" alt="...">
             <div class="card-body">
-                <p class="card-text">{{ place.description }}</p>
+                <p class="card-text">
+                    <strong> {{ place.title }} </strong><br/>
+                    {{ place.description.slice(0,100) }}
+                </p>
             </div>
             </div>
         </div>
@@ -87,7 +90,7 @@ a:hover {
 }
 .btn {
     color: white;
-    background-color: #FE7A15;
+    background-color: #80162B;
 }
 .card-item {
     margin-left:20px;
