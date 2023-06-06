@@ -2,14 +2,15 @@
 import { onMounted } from "vue";
 import { useRouter } from "vue-router";
 import PlaceServices from "../services/PlaceServices.js";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import Spinner from "../components/Spinner.vue";
 import { getImageUrl } from "../global.js";
 
 
+const search = ref("");
 const places = ref([]);
 const spinner = ref(true);
-
+const backup = ref([]);
 onMounted(async () => {
   await getPlaces();
   spinner.value = false;
@@ -18,16 +19,28 @@ onMounted(async () => {
 async function getPlaces() {
   await PlaceServices.getPlaces()
     .then((response) => {
-      places.value = response.data;
+        backup.value = response.data;
+        places.value = response.data;
     })
     .catch((error) => {
       console.log(error);
     });
 }
 
-const gethotelUrl = (id)=>{
-    return "/hotel/"+id
+async function searchPlace(updatedValue) {
+    const temp = backup.value
+    const filteredPlaces = temp.filter((place) => {
+        return (
+        place.title.toLowerCase().includes(updatedValue.toLowerCase()) ||
+        place.description.toLowerCase().includes(updatedValue.toLowerCase())
+        );
+    });
+    places.value = filteredPlaces;
 }
+
+watch(search, (updatedValue) => {
+ searchPlace(updatedValue)
+});
 
 
 </script>
@@ -38,24 +51,25 @@ const gethotelUrl = (id)=>{
          <div style="display: flex; justify-content: center;">
             <h3>Places</h3>
         </div> <br/>
-            <Spinner v-if="spinner" />
-            <div class="row" v-else>
-                <div class="card card-item" v-for="place in places" :key="place.id">
-                <img :src="getImageUrl(place.image_url)" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text">{{ place.description }}</p>
-                </div>
-                </div>
+        <div style="display: flex; justify-content: center;">
+        <input class="form-control mr-sm-2 search" type="search" placeholder="Search" aria-label="Search" v-model="search"/>
+        </div>
+        <Spinner v-if="spinner" />
+        <div class="row" v-else>
+            <div class="card card-item" v-for="place in places" :key="place.id">
+            <img :src="getImageUrl(place.image_url)" class="card-img-top" alt="...">
+            <div class="card-body">
+                <p class="card-text">{{ place.description }}</p>
             </div>
+            </div>
+        </div>
       </div><br/>
   </v-container>
 </template>
 
 <style scoped>
-.centered-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.container {
+    cursor: pointer;
 }
 .card-img {
     border-radius: 7px;
@@ -79,5 +93,9 @@ a:hover {
     margin-left:20px;
     margin-top:30px;
     width: 22rem;
+}
+.search {
+    width: 60%;
+    align-content: center;
 }
 </style>
