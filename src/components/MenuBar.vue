@@ -61,7 +61,7 @@ const searchPlan = () => {
     </ul>
     <form class="form-inline my-2 my-lg-0 search">
       <input class="form-control mr-sm-2" type="search" placeholder="Search Plan here" aria-label="Search" v-model="plan">
-      <a class="btn btn-search my-2 my-sm-0" type="submit" :href="searchPlan()">Search</a>
+      <a class="btn btn-search my-2 my-sm-0" type="submit" :href="searchPlan()">Enter</a>
     </form>
     <a class="nav-link" href="./login" style="margin-right:20px" v-if="user === null">Login</a>
          <v-menu v-if="user !== null" min-width="200px" rounded>
