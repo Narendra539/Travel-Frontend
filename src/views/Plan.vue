@@ -28,7 +28,7 @@ async function bookPlanNow() {
     spinner.value = true;
     await BookingServices.addBooking({
         user_id: user.value.id,
-        itenarary_id: planId,
+        itenarary_id: plan.value.id,
     })
     .then((response) => {
         spinner.value = false;
