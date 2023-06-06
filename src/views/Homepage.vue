@@ -52,7 +52,7 @@ async function getGroup3() {
 }
 
 const searchPlan = () => {
-  return '/plans?from='+from.value.toString()+'&to='+to.value.toString()+'&start='+start.value.toString()+'&end='+end.value.toString()
+  return '/travel-frontend/plans?from='+from.value.toString()+'&to='+to.value.toString()+'&start='+start.value.toString()+'&end='+end.value.toString()
 }
 
 </script>
