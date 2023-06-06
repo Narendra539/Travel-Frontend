@@ -2,7 +2,7 @@
 import { onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
-import { getImageUrl,getPlanUrl } from "../global.js";
+import { getImageUrl,getPlanUrl,getPlanEditUrl } from "../global.js";
 import PlanServices from "../services/PlanServices.js";
 import BookingServices from "../services/BookingServices.js";
 import Spinner from "../components/Spinner.vue";
@@ -87,6 +87,12 @@ function closeSnackBar() {
                     <button type="button" class="btn btn-success book-button" v-if="user != null" @click="bookPlanNow()" >Book Now</button>
                 </div>
             </div>
+            <div class="settings" v-if="user != null && user.role != 'customer'">
+                <a class="btn btn-warning button" :href="getPlanEditUrl(plan.id)">Edit</a>
+                <button class="btn btn-primary button" @click="deletePlan()">
+                    Delete
+                </button>
+            </div>
             <div v-for="(day,index) in plan.day" :key="index" class="days">
                 <div class="day">
                     <h5>Day-{{ day.day_index}}</h5>
@@ -144,5 +150,13 @@ function closeSnackBar() {
 }
 .book-button {
     margin-top: 20px;
+}
+.settings {
+    display:flex;
+    align-content: flex-end;
+    margin-left:auto;
+    margin-left: 20px;
+    margin-left: 50px;
+    margin-bottom: 20px;
 }
 </style>
