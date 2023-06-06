@@ -39,7 +39,7 @@ async function getBookings() {
       <div v-for="(booking,index) in bookings" :key="booking.id">
         <div class="booking">
           <p> {{index+1}}. Booked On <strong> {{ booking.createdAt.slice(0,10) }} </strong></p>
-          <p><a class="btn btn-warning" :href="getPlanUrl(booking.itenararyId)">Get Plan information</a></p>
+          <p><a class="btn btn-warning" :href="getPlanUrl(booking.itenararyId)">Get Itinerary information</a></p>
         </div>
       </div>
     </div>
