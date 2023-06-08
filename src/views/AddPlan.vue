@@ -34,7 +34,7 @@ function closeSnackBar() {
 
 async function addPlan() {
     isSpinner.value = true
-    await PlanServices.addPlan({ ...plan.value, rating: 4})
+    await PlanServices.addPlan({ ...plan.value, rating: 4,category_id: 1})
         .then((response) => {
             snackbar.value.value = true;
             snackbar.value.color = "green";
