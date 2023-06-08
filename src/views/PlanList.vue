@@ -38,6 +38,7 @@ async function getPlans() {
       <div class="container" style="margin-top:20px">
          <div style="display: flex; justify-content: center;">
             <h3>Itineraries</h3>
+            <a class="btn btn-warning add" href="/travel-frontend/addplan">Add Itinerary</a>
         </div> <br/>
             <Spinner v-if="spinner" />
             <div class="row" v-else>
@@ -68,9 +69,6 @@ async function getPlans() {
 .card-title {
     margin-top: 10px;
 }
-a:hover {
-    color:black;
-}
 a {
     text-decoration: none;
     color: black;
@@ -87,5 +85,9 @@ a {
     margin-left:20px;
     margin-top:30px;
     width: 22rem;
+}
+
+.add {
+    margin-left:20px;
 }
 </style>

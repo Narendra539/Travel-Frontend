@@ -58,9 +58,6 @@ const searchPlan = () => {
       <li class="nav-item" v-if="user !== null">
         <a class="nav-link" href="/travel-frontend/bookings">Bookings</a>
       </li>
-         <li class="nav-item" v-if="user !== null">
-        <a class="nav-link" href="/travel-frontend/addplan">Add Itinerary</a>
-      </li>
     </ul>
     <form class="form-inline my-2 my-lg-0 search">
       <input class="form-control mr-sm-2" type="search" placeholder="Search Itinerary here" aria-label="Search" v-model="plan">
