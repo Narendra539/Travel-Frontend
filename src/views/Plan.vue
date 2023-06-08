@@ -6,6 +6,7 @@ import { getImageUrl,getPlanUrl,getPlanEditUrl } from "../global.js";
 import PlanServices from "../services/PlanServices.js";
 import BookingServices from "../services/BookingServices.js";
 import Spinner from "../components/Spinner.vue";
+import DayForPlan from "../components/DayForPlan.vue";
 
 
 const router = useRouter();
@@ -29,6 +30,7 @@ async function bookPlanNow() {
     await BookingServices.addBooking({
         user_id: user.value.id,
         itenarary_id: plan.value.id,
+        users: []
     })
     .then((response) => {
         spinner.value = false;
@@ -94,10 +96,7 @@ function closeSnackBar() {
                 </button>
             </div>
             <div v-for="(day,index) in plan.day" :key="index" class="days">
-                <div class="day">
-                    <h5>Day-{{ day.day_index}}</h5>
-                    <p> {{ day.description }} </p>
-                </div>
+                <DayForPlan :day="day" />
             </div>
 
       </div>
