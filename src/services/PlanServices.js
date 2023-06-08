@@ -18,4 +18,8 @@ export default {
   deletePlan(planId) {
     return apiClient.delete("itenararies/" + planId);
   },
+  getDays(planId,dayId){
+    console.log("days",dayId)
+    return apiClient.get("days/"+dayId+"/itenarary/"+planId);
+  }
 };
