@@ -15,10 +15,12 @@ const start = ref(router.currentRoute.value.query.start);
 const end = ref(router.currentRoute.value.query.end);
 const from = ref(router.currentRoute.value.query.from);
 const to = ref(router.currentRoute.value.query.to);
+const user = ref(null);
 
 onMounted(async () => {
-  await getPlans();
-  spinner.value = false;
+    user.value = JSON.parse(localStorage.getItem("user"));
+    await getPlans();
+    spinner.value = false;
 });
 
 async function getPlans() {
@@ -38,7 +40,7 @@ async function getPlans() {
       <div class="container" style="margin-top:20px">
          <div style="display: flex; justify-content: center;">
             <h3>Itineraries</h3>
-            <a class="btn btn-warning add" href="/travel-frontend/addplan">Add Itinerary</a>
+            <a class="btn btn-warning add" href="/travel-frontend/addplan" v-if="user?.isAdmin && user.isAdmin != 0">Add Itinerary</a>
         </div> <br/>
             <Spinner v-if="spinner" />
             <div class="row" v-else>
