@@ -79,16 +79,27 @@ function closeSnackBar() {
 }
 
 const addUser = () => {
-  bookingUsers.value.push(bookingUser.value);
-  console.log(bookingUsers.value);
-  snackbar.value.value = true;
-  snackbar.value.color = "green";
-  snackbar.value.text = "Added "+bookingUser.value.first_name+ " successfully";
-  bookingUser.value = {
-      first_name:"",
-      last_name: "",
-      mobile: ""
-    }
+  if(bookingUser.value.first_name === "" ) {
+    snackbar.value.value = true;
+    snackbar.value.color = "error";
+    snackbar.value.text = "First Name is empty!";
+  } 
+  else if(bookingUser.value.last_name === "" ) {
+    snackbar.value.value = true;
+    snackbar.value.color = "error";
+    snackbar.value.text = "Last Name is empty!";
+  } else {
+    bookingUsers.value.push(bookingUser.value);
+    console.log(bookingUsers.value);
+    snackbar.value.value = true;
+    snackbar.value.color = "green";
+    snackbar.value.text = "Added "+bookingUser.value.first_name+ " successfully";
+    bookingUser.value = {
+        first_name:"",
+        last_name: "",
+        mobile: ""
+      }
+  }
 }
 
 </script>
