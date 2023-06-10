@@ -19,6 +19,12 @@ const snackbar = ref({
   text: "",
 });
 const plan = ref({})
+const bookingUser = ref({
+  first_name:"",
+  last_name: "",
+  mobile: ""
+})
+const bookingUsers = ref([])
 
 onMounted(async () => {
   user.value = JSON.parse(localStorage.getItem("user"));
@@ -30,7 +36,7 @@ async function bookPlanNow() {
     await BookingServices.addBooking({
         user_id: user.value.id,
         itenarary_id: plan.value.id,
-        users: []
+        users: bookingUsers.value
     })
     .then((response) => {
         spinner.value = false;
@@ -72,6 +78,19 @@ function closeSnackBar() {
   snackbar.value.value = false;
 }
 
+const addUser = () => {
+  bookingUsers.value.push(bookingUser.value);
+  console.log(bookingUsers.value);
+  snackbar.value.value = true;
+  snackbar.value.color = "green";
+  snackbar.value.text = "Added "+bookingUser.value.first_name+ " successfully";
+  bookingUser.value = {
+      first_name:"",
+      last_name: "",
+      mobile: ""
+    }
+}
+
 </script>
 
 <template>
@@ -86,7 +105,9 @@ function closeSnackBar() {
                     <h3 class="title">{{ plan.title }}</h3><p class="rating"> (Rating {{ plan.rating }})</p> <br/>
                     <p class="col-md-12">{{ plan.description }}</p>
                     <strong>This Plan starts from {{ plan.start_date.slice(0,10) }}, ends on {{ plan.end_date.slice(0,10) }}. </strong> <br/>
-                    <button type="button" class="btn btn-success book-button" v-if="user != null" @click="bookPlanNow()" >Book Now</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal">
+                      Book now
+                    </button>
                 </div>
             </div>
             <div class="settings" v-if="user != null && user.role != 'customer'">
@@ -98,7 +119,6 @@ function closeSnackBar() {
             <div v-for="(day,index) in plan.day" :key="index" class="days">
                 <DayForPlan :day="day" />
             </div>
-
       </div>
        <v-snackbar v-model="snackbar.value" rounded="pill">
         {{ snackbar.text }}
@@ -112,6 +132,35 @@ function closeSnackBar() {
           </v-btn>
         </template>
       </v-snackbar>
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="bookingModalLabel">Enter Details</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="first_name" class="form-label">First Name</label>
+              <input type="text" class="form-control form-control-lg" id="first_name" v-model="bookingUser.first_name"/>
+            </div>
+            <div class="mb-3">
+              <label for="last_name" class="form-label">Last Name</label>
+              <input type="text" class="form-control form-control-lg" id="last_name" v-model="bookingUser.last_name"/>
+            </div>
+              <div class="mb-3">
+              <label for="mobile" class="form-label">Mobile Number</label>
+              <input type="number" class="form-control form-control-lg" id="mobile" v-model="bookingUser.mobile"/>
+            </div>
+              <button type="button" class="btn btn-primary" @click="addUser()">Add User</button>
+            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" @click="bookPlanNow()">Confirm Booking</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </v-container>
 </template>
 
