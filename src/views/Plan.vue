@@ -113,7 +113,6 @@ const addUser = () => {
                     <img :src="getImageUrl(plan.image_url)" class="image-tag"/>
                 </div>
                 <div class="col-md-12">
-                    <h3 class="title">{{ plan.title }}</h3><p class="rating"> (Rating {{ plan.rating }})</p> <br/>
                     <p class="col-md-12">{{ plan.description }}</p>
                     <strong>This Plan starts from {{ plan.start_date.slice(0,10) }}, ends on {{ plan.end_date.slice(0,10) }}. </strong> <br/>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal">
@@ -153,11 +152,11 @@ const addUser = () => {
           <div class="modal-body">
             <div class="mb-3">
               <label for="first_name" class="form-label">First Name</label>
-              <input type="text" class="form-control form-control-lg" id="first_name" v-model="bookingUser.first_name"/>
+              <input type="text" class="form-control form-control-lg" id="first_name" v-model="bookingUser.first_name" />
             </div>
             <div class="mb-3">
               <label for="last_name" class="form-label">Last Name</label>
-              <input type="text" class="form-control form-control-lg" id="last_name" v-model="bookingUser.last_name"/>
+              <input type="text" class="form-control form-control-lg" id="last_name" v-model="bookingUser.last_name" />
             </div>
               <div class="mb-3">
               <label for="mobile" class="form-label">Mobile Number</label>

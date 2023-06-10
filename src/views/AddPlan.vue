@@ -15,9 +15,7 @@ const snackbar = ref({
 const plan = ref({
   title: "",
   description: "",
-  rating: "",
   image_url: "",
-  place_from: "",
   place_to: "",
   start_date: "",
   end_date: "",
@@ -33,8 +31,39 @@ function closeSnackBar() {
 }
 
 async function addPlan() {
+  if(plan.value.title === "") {
+        snackbar.value.value = true;
+        snackbar.value.color = "error";
+        snackbar.value.text = "Title is empty!";
+  }
+  else if(plan.value.description === "") {
+        snackbar.value.value = true;
+        snackbar.value.color = "error";
+        snackbar.value.text = "Description is empty!";
+  }
+  else if(plan.value.place_to === "") {
+        snackbar.value.value = true;
+        snackbar.value.color = "error";
+        snackbar.value.text = "Destination is empty!";
+  }
+  else if(plan.value.start_date === "") {
+        snackbar.value.value = true;
+        snackbar.value.color = "error";
+        snackbar.value.text = "Start date is empty!";
+  }
+  else if(plan.value.end_date === "") {
+        snackbar.value.value = true;
+        snackbar.value.color = "error";
+        snackbar.value.text = "End date is empty!";
+  }
+  else if(plan.value.image_url === "") {
+        snackbar.value.value = true;
+        snackbar.value.color = "error";
+        snackbar.value.text = "Image Url is empty!";
+  }
+  else {
     isSpinner.value = true
-    await PlanServices.addPlan({ ...plan.value, rating: 4,category_id: 1})
+    await PlanServices.addPlan({ ...plan.value, category_id: 1})
         .then((response) => {
             snackbar.value.value = true;
             snackbar.value.color = "green";
@@ -48,6 +77,7 @@ async function addPlan() {
             snackbar.value.text = error.response.data.message;
             isSpinner.value = false
         });
+  }
 }
 </script>
 
@@ -75,11 +105,7 @@ async function addPlan() {
           <input type="date" class="form-control form-control-lg" id="end_date" v-model="plan.end_date"/>
         </div>
         <div class="mb-3">
-          <label for="place_from" class="form-label">From Place</label>
-          <input type="text" class="form-control form-control-lg" id="place_from" v-model="plan.place_from"/>
-        </div>
-        <div class="mb-3">
-          <label for="place_to" class="form-label">To Place</label>
+          <label for="place_to" class="form-label">Destination</label>
           <input type="text" class="form-control form-control-lg" id="place_to" v-model="plan.place_to"/>
         </div>
         <div class="mb-3">
