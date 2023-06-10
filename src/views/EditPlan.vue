@@ -34,7 +34,20 @@ function closeSnackBar() {
 }
 
 async function getPlan() {
-    if(plan.value.title === "") {
+
+    spinner.value = true
+    await PlanServices.getPlan(router.currentRoute.value.params.id)
+        .then((response) => {
+            plan.value = response.data
+            spinner.value = false
+        })
+        .catch((error) => {
+            spinner.value = false
+        });
+}
+
+async function updatePlan() {
+      if(plan.value.title === "") {
         snackbar.value.value = true;
         snackbar.value.color = "error";
         snackbar.value.text = "Title is empty!";
@@ -65,19 +78,6 @@ async function getPlan() {
         snackbar.value.text = "Image Url is empty!";
   } else{
     spinner.value = true
-    await PlanServices.getPlan(router.currentRoute.value.params.id)
-        .then((response) => {
-            plan.value = response.data
-            spinner.value = false
-        })
-        .catch((error) => {
-            spinner.value = false
-        });
-  }
-}
-
-async function updatePlan() {
-    spinner.value = true
     await PlanServices.updatePlan(plan.value)
         .then((response) => {
             snackbar.value.value = true;
@@ -92,6 +92,7 @@ async function updatePlan() {
             snackbar.value.text = error.response.data.message;
             spinner.value = false
         });
+  }
 }
 </script>
 
