@@ -10,6 +10,11 @@ import { getImageUrl,getPlanUrl } from "../global.js";
 const bookings = ref([]);
 const spinner = ref(true);
 const user = ref(null);
+const snackbar = ref({
+  value: false,
+  color: "",
+  text: "",
+});
 onMounted(async () => {
   user.value = JSON.parse(localStorage.getItem("user"));
   await getBookings();
@@ -24,6 +29,25 @@ async function getBookings() {
     .catch((error) => {
       console.log(error);
     });
+}
+
+const cancelBooking = async(id,index) => {
+    await BookingServices.deleteBooking(id)
+    .then((res) => {
+      bookings.value.splice(index, 1);
+      snackbar.value.value = true;
+      snackbar.value.color = "green";
+      snackbar.value.text = "Booking is cancelled successfully!";
+    })
+    .catch((error) => {
+      console.log(error);
+      snackbar.value.value = true;
+      snackbar.value.color = "error";
+      snackbar.value.text = error.response.data.message;
+    });
+}
+function closeSnackBar() {
+  snackbar.value.value = false;
 }
 </script>
 
@@ -51,11 +75,26 @@ async function getBookings() {
               </ul>
             </div>
           </div>
-          <p><a class="btn btn-warning" :href="getPlanUrl(booking.itenararyId)">Get Itinerary information</a></p>
+          <div style="flex">
+          <a class="btn btn-warning getplan" :href="getPlanUrl(booking.itenararyId)">Get Itinerary information</a>
+          <button class="btn btn-danger" @click="cancelBooking(booking.id,index)">Cancel Booking</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
+   <v-snackbar v-model="snackbar.value" rounded="pill">
+        {{ snackbar.text }}
+        <template v-slot:actions>
+          <v-btn
+            :color="snackbar.color"
+            variant="text"
+            @click="closeSnackBar()"
+          >
+            Close
+          </v-btn>
+        </template>
+      </v-snackbar>
   <br/>
 </v-container>
 
@@ -63,7 +102,7 @@ async function getBookings() {
 
 <style scoped>
 
-.btn {
+.getplan {
     color: white;
     background-color: #80162B;
 }
@@ -75,6 +114,9 @@ async function getBookings() {
   width:100%;
   border-bottom: 1px solid black;
   padding:15px;
+  margin-left: 20px;
+}
+.btn-danger {
   margin-left: 20px;
 }
 .users{

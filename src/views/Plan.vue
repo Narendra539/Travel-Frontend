@@ -66,11 +66,18 @@ async function deletePlan() {
     spinner.value = true;
     await PlanServices.deletePlan(planId)
     .then((response) => {
+         snackbar.value.value = true;
+        snackbar.value.color = "green";
+        snackbar.value.text = "Itenarary is delete successfully!";
+        router.push({ name: "home" });
         spinner.value = false;
     })
     .catch((error) => {
       console.log(error);
-        spinner.value = false;
+      snackbar.value.value = true;
+      snackbar.value.color = "error";
+      snackbar.value.text = error.response.data.message;
+      spinner.value = false;
     });
 }
 
@@ -115,12 +122,12 @@ const addUser = () => {
                 <div class="col-md-12">
                     <p class="col-md-12">{{ plan.description }}</p>
                     <strong>This Plan starts from {{ plan.start_date.slice(0,10) }}, ends on {{ plan.end_date.slice(0,10) }}. </strong> <br/>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal"  v-if="user?.isAdmin && user.isAdmin == 0">
                       Book now
                     </button>
                 </div>
             </div>
-            <div class="settings" v-if="user != null && user.role != 'customer'">
+            <div class="settings"  v-if="user?.isAdmin && user.isAdmin != 0">
                 <a class="btn btn-warning button" :href="getPlanEditUrl(plan.id)">Edit</a>
                 <button class="btn btn-primary button" @click="deletePlan()">
                     Delete
