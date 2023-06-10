@@ -16,6 +16,7 @@ const user = ref({
   lastName: "",
   email: "",
   password: "",
+  isAdmin: 0
 });
 
 onMounted(async () => {
