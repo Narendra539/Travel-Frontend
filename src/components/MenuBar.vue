@@ -55,8 +55,8 @@ const searchPlan = () => {
       <li class="nav-item">
         <a class="nav-link" href="/travel-frontend/hotels">Hotels</a>
       </li>
-      <li class="nav-item" v-if="user !== null">
-        <a class="nav-link" href="/travel-frontend/bookings">Bookings</a>
+      <li class="nav-item" v-if="user !== null && user?.isAdmin == 0">
+        <a class="nav-link" href="/travel-frontend/bookings" v-if="user?.isAdmin && user.isAdmin != 0">Bookings</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0 search">
