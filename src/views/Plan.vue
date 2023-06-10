@@ -122,7 +122,7 @@ const addUser = () => {
                 <div class="col-md-12">
                     <p class="col-md-12">{{ plan.description }}</p>
                     <strong>This Plan starts from {{ plan.start_date.slice(0,10) }}, ends on {{ plan.end_date.slice(0,10) }}. </strong> <br/>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal"  v-if="user?.isAdmin && user.isAdmin == 0">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal"  v-if="user.isAdmin == 0">
                       Book now
                     </button>
                 </div>
