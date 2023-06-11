@@ -37,6 +37,8 @@ async function getHotel() {
                 </div>
                 <div class="col-md-12">
                     <h2>{{ hotel.name }}</h2>
+                    <h5 class="underline"> Description </h5>
+                    <p class="col-md-12">{{ hotel.description }}</p>
                     <h5 class="underline"> Details </h5>
                     <p>Location <strong> {{ hotel.location }}</strong></p>
                 </div>
