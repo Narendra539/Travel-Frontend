@@ -1,47 +1,37 @@
 <script setup>
 import { onMounted } from "vue";
 import { useRouter } from "vue-router";
-import PlaceServices from "../services/PlaceServices.js";
-import { ref, watch } from "vue";
+import PlanServices from "../services/PlanServices.js";
+import { ref } from "vue";
 import Spinner from "../components/Spinner.vue";
-import { getImageUrl } from "../global.js";
+import { getImageUrl,getPlanUrl } from "../global.js";
 
 
-const search = ref("");
-const places = ref([]);
+const router = useRouter();
+const plans = ref([]);
 const spinner = ref(true);
-const backup = ref([]);
+const key = ref(router.currentRoute.value.query.key);
+const start = ref(router.currentRoute.value.query.start);
+const end = ref(router.currentRoute.value.query.end);
+const from = ref(router.currentRoute.value.query.from);
+const to = ref(router.currentRoute.value.query.to);
+const user = ref(null);
+
 onMounted(async () => {
-  await getPlaces();
-  spinner.value = false;
+    user.value = JSON.parse(localStorage.getItem("user"));
+    await getPlans();
+    spinner.value = false;
 });
 
-async function getPlaces() {
-  await PlaceServices.getPlaces()
+async function getPlans() {
+  await PlanServices.getPlans({ key:key.value,from:from.value,to:to.value,start:start.value,end:end.value})
     .then((response) => {
-        backup.value = response.data;
-        places.value = response.data;
+      plans.value = response.data;
     })
     .catch((error) => {
       console.log(error);
     });
 }
-
-async function searchPlace(updatedValue) {
-    const temp = backup.value
-    const filteredPlaces = temp.filter((place) => {
-        return (
-        place.title.toLowerCase().includes(updatedValue.toLowerCase()) ||
-        place.description.toLowerCase().includes(updatedValue.toLowerCase())
-        );
-    });
-    places.value = filteredPlaces;
-}
-
-watch(search, (updatedValue) => {
- searchPlace(updatedValue)
-});
-
 
 </script>
 
@@ -49,32 +39,30 @@ watch(search, (updatedValue) => {
   <v-container>
       <div class="container" style="margin-top:20px">
          <div style="display: flex; justify-content: center;">
-            <h3>Places</h3>
+            <h3>Itineraries</h3>
+            <a class="btn btn-warning add" href="/travel-frontend/addplan" v-if="user?.isAdmin && user.isAdmin != 0">Add Itinerary</a>
         </div> <br/>
-        <div style="display: flex; justify-content: center;">
-        <input class="form-control mr-sm-2 search" type="search" placeholder="Search" aria-label="Search" v-model="search"/>
-        </div>
-        <Spinner v-if="spinner" />
-        <div class="row" v-else>
-            <div class="card card-item" v-for="place in places" :key="place.id">
-                <a :href="['/travel-frontend/places/'+place.id]">
-                    <img :src="getImageUrl(place.image_url)" class="card-img-top" alt="...">
+            <Spinner v-if="spinner" />
+            <div class="row" v-else>
+                <div class="card card-item" v-for="plan in plans" :key="plan.id">
+                <a :href="getPlanUrl(plan.id)">
+                    <img :src="getImageUrl(plan.image_url)" class="card-img-top" alt="..."/>
                     <div class="card-body">
-                        <p class="card-text">
-                            <strong> {{ place.title }} </strong><br/>
-                            {{ place.description.slice(0,100) }}
-                        </p>
+                    <strong> {{ plan.title }} </strong><br/>
+                    {{ plan.description.slice(0,100) }}                
                     </div>
                 </a>
+                </div>
             </div>
-        </div>
       </div><br/>
   </v-container>
 </template>
 
 <style scoped>
-.container {
-    cursor: pointer;
+.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .card-img {
     border-radius: 7px;
@@ -83,24 +71,25 @@ watch(search, (updatedValue) => {
 .card-title {
     margin-top: 10px;
 }
-a:hover {
-    color:black;
+a {
+    text-decoration: none;
+    color: black;
 }
-.place {
+.plan {
     cursor: pointer;
     margin-top: 20px;
 }
 .btn {
     color: white;
-    background-color: #80162B;
+    background-color: #FE7A15;
 }
 .card-item {
     margin-left:20px;
     margin-top:30px;
     width: 22rem;
 }
-.search {
-    width: 60%;
-    align-content: center;
+
+.add {
+    margin-left:20px;
 }
 </style>
