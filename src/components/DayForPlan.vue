@@ -42,7 +42,7 @@ async function getDayDetails() {
           <img :src="getImageUrl(place.image_url)" class="image" width="150" height="150"/>
           <div class="details">
           <h5> {{ place.title }} </h5>
-          <a class="btn btn-warning btn-sm" href="" > More Info </a>
+          <a class="btn btn-warning btn-sm" :href="['/travel-frontend/places/'+place.id]" > More Info </a>
           </div>
         </div>
             <h5 v-if="dayInfo.flights?.length != 0" class="title" > Flights </h5>
@@ -54,8 +54,6 @@ async function getDayDetails() {
             <p> Arrival Time - <strong>{{ flight.arrival_time }}</strong> </p>
             <p> Depature Place - <strong>{{ flight.depature_place }}</strong> </p>
             <p> Depature Time - <strong>{{ flight.depature_time }}</strong> </p>
-
-            <a class="btn btn-warning btn-sm" href="" > More Info </a>
             </div>
         </div>
             <h5 v-if="dayInfo.hotels?.length != 0" class="title" > Hotels </h5>
@@ -65,7 +63,7 @@ async function getDayDetails() {
             <h5> {{ hotel.name }} </h5>
             <p> Checkin Date - {{ hotel.checkin_date.slice(0,10) }}</p>
             <p> Checkout Date - {{ hotel.checkout_date.slice(0,10) }}</p>
-            <a class="btn btn-warning btn-sm" href="" > More Info </a>
+            <a class="btn btn-warning btn-sm" :href="['/travel-frontend/hotels/'+hotel.id]" > More Info </a>
             </div>
         </div>
         
