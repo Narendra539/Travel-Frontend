@@ -15,4 +15,12 @@ import 'bootstrap/dist/js/bootstrap.js'
 
 <style>
 
+a {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+a:hover {
+  color: black;
+}
 </style>

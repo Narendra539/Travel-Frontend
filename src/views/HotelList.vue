@@ -58,11 +58,13 @@ watch(search, (updatedValue) => {
         <Spinner v-if="spinner" />
         <div class="row" v-else>
             <div class="card card-item" v-for="hotel in hotels" :key="hotel.id">
-            <img :src="getImageUrl(hotel.image_url)" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-text">{{ hotel.name }}</h5>
-                <p>Location - {{ hotel.location }}</p>
-            </div>
+                <a :href="['/travel-frontend/hotels/'+ hotel.id]" >
+                    <img :src="getImageUrl(hotel.image_url)" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-text">{{ hotel.name }}</h5>
+                        <p>Location - {{ hotel.location }}</p>
+                    </div>
+                </a>
             </div>
         </div>
       </div><br/>
@@ -81,6 +83,10 @@ watch(search, (updatedValue) => {
     margin-top: 10px;
 }
 a:hover {
+    color:black;
+}
+a {
+    text-decoration: none;
     color:black;
 }
 .place {

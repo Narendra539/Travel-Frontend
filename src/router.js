@@ -48,6 +48,21 @@ const router = createRouter({
       name: "editPlan",
       component: () => import("./views/EditPlan.vue"),
     },
+    {
+      path: "/places/:id",
+      name: "place",
+      component: () => import("./views/Place.vue"),
+    },
+    {
+      path: "/flights/:id",
+      name: "flight",
+      component: () => import("./views/Flight.vue"),
+    },
+    {
+      path: "/hotels/:id",
+      name: "hotel",
+      component: () => import("./views/Hotel.vue"),
+    },
   ],
 });
 

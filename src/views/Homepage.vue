@@ -103,11 +103,13 @@ const searchPlan = () => {
         <h2> Most Visited Places </h2>
         <div class="card-group">
         <div class="card" v-for="item in mostVisitedPlaces.slice(0,3)" :key="item.id">
-            <img class="card-img-top" :src="getImageUrl(item.image_url)" alt="Card image cap">
-            <div class="card-body">
-            <h5 class="card-title">{{ item.title }}</h5>
-            <p class="card-text">{{ item.description.slice(0,100) }}..</p>
-            </div>
+            <a :href="['/travel-frontend/places/'+item.id]">
+              <img class="card-img-top" :src="getImageUrl(item.image_url)" alt="Card image cap">
+              <div class="card-body">
+              <h5 class="card-title">{{ item.title }}</h5>
+              <p class="card-text">{{ item.description.slice(0,100) }}..</p>
+              </div>
+            </a>
         </div>
         </div>
     </div><br/><br/>
@@ -116,11 +118,13 @@ const searchPlan = () => {
         <h2> Famous Hotels </h2>
         <div class="card-group">
         <div class="card" v-for="item in famousHotels.slice(0,3)" :key="item.id">
-            <img class="card-img-top" :src="getImageUrl(item.image_url)" alt="Card image cap">
-            <div class="card-body">
-            <h5 class="card-title">{{ item.name }}</h5>
-            <p class="card-text">{{ item.location }}</p>
-            </div>
+            <a :href="['/travel-frontend/hotels/'+item.id]">
+              <img class="card-img-top" :src="getImageUrl(item.image_url)" alt="Card image cap">
+              <div class="card-body">
+              <h5 class="card-title">{{ item.name }}</h5>
+              <p class="card-text">{{ item.location }}</p>
+              </div>
+            </a>
         </div>
         </div>
     </div><br/><br/>
