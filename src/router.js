@@ -63,6 +63,11 @@ const router = createRouter({
       name: "hotel",
       component: () => import("./views/Hotel.vue"),
     },
+    {
+      path: "/addplanday",
+      name: "addDay",
+      component: () => import("./views/AddPlanDay.vue"),
+    },
   ],
 });
 
