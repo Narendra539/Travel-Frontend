@@ -32,7 +32,7 @@ onMounted(async () => {
   spinner.value = false;
 });
 async function bookPlanNow() {
-  if(users.value.length == 0) {
+  if(bookingUsers.value.length == 0) {
     snackbar.value.value = true;
     snackbar.value.color = "error";
     snackbar.value.text = "Atleast one user must be added!";
