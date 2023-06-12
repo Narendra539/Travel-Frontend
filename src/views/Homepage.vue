@@ -11,8 +11,6 @@ const mostVisitedPlaces = ref([]);
 const famousHotels = ref([]);
 const start = ref('');
 const end = ref('');
-const from = ref('');
-const to = ref('');
 const spinner = ref(true);
 
 onMounted(async () => {
@@ -41,18 +39,8 @@ async function getMostVisitedHotels() {
     });
 }
 
-async function getGroup3() {
-  await PlaceServices.getPlaces()
-    .then((response) => {
-      places.value = response.data;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
-
 const searchPlan = () => {
-  return '/travel-frontend/plans?from='+from.value.toString()+'&to='+to.value.toString()+'&start='+start.value.toString()+'&end='+end.value.toString()
+  return '/travel-frontend/plans?start='+start.value.toString()+'&end='+end.value.toString()
 }
 
 </script>
@@ -63,18 +51,6 @@ const searchPlan = () => {
                 <div class="text-center text-white">
                     <h2 class="mb-5 title">Life is short, and the world is wide.</h2>
                     <div class="container" style="padding:10px;">
-                        <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                            <input type="text" class="form-control" id="from" placeholder="From" v-model="from">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                            <input type="text" class="form-control" id="to" placeholder="To" v-model="to">
-                            </div>
-                        </div>
-                        </div><br/>
                         <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
