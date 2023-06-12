@@ -85,7 +85,10 @@ async function addPlan() {
   <v-container>
     <div id="body">
       <v-card class="rounded-lg elevation-5">
-        <v-card-title class="headline mb-2">Add Itenarary </v-card-title>
+        <div style="display:flex;" class="heading">
+          <v-card-title class="headline mb-2">Add Itenarary </v-card-title>
+          <v-btn variant="flat" color="primary" class="add" href="/travel-frontend/addplanday">Add Day</v-btn>
+        </div>
         <Spinner v-if="isSpinner" />
         <v-card-text v-else>
           <div class="mb-3">
@@ -134,3 +137,15 @@ async function addPlan() {
     </div>
   </v-container>
 </template>
+
+<style scoped>
+.add {
+  margin-right: 20px;
+  height: 40px;
+  margin-top: 5px;
+}
+.heading {
+    margin-top: 10px;
+    justify-content: space-between;
+}
+</style>
