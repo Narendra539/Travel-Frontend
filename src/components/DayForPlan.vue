@@ -61,8 +61,6 @@ async function getDayDetails() {
             <img :src="getImageUrl(hotel.image_url)" class="image" width="150" height="150"/>
             <div class="details">
             <h5> {{ hotel.name }} </h5>
-            <p> Checkin Date - {{ hotel.checkin_date.slice(0,10) }}</p>
-            <p> Checkout Date - {{ hotel.checkout_date.slice(0,10) }}</p>
             <a class="btn btn-warning btn-sm" :href="['/travel-frontend/hotels/'+hotel.id]" > More Info </a>
             </div>
         </div>

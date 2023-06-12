@@ -32,6 +32,12 @@ onMounted(async () => {
   spinner.value = false;
 });
 async function bookPlanNow() {
+  if(bookingUsers.value.length == 0) {
+    snackbar.value.value = true;
+    snackbar.value.color = "error";
+    snackbar.value.text = "Atleast one user must be added!";
+  } 
+  else {
     spinner.value = true;
     await BookingServices.addBooking({
         user_id: user.value.id,
@@ -51,6 +57,7 @@ async function bookPlanNow() {
         snackbar.value.color = "error";
         snackbar.value.text = error.response.data.message;
     });
+  }
 }
 async function getPlan() {
   await PlanServices.getPlan(planId)
