@@ -41,11 +41,6 @@ async function addPlan() {
         snackbar.value.color = "error";
         snackbar.value.text = "Description is empty!";
   }
-  else if(plan.value.place_to === "") {
-        snackbar.value.value = true;
-        snackbar.value.color = "error";
-        snackbar.value.text = "Destination is empty!";
-  }
   else if(plan.value.start_date === "") {
         snackbar.value.value = true;
         snackbar.value.color = "error";
@@ -106,10 +101,6 @@ async function addPlan() {
         <div class="mb-3">
           <label for="end_date" class="form-label">End Date</label>
           <input type="date" class="form-control form-control-lg" id="end_date" v-model="plan.end_date"/>
-        </div>
-        <div class="mb-3">
-          <label for="place_to" class="form-label">Destination</label>
-          <input type="text" class="form-control form-control-lg" id="place_to" v-model="plan.place_to"/>
         </div>
         <div class="mb-3">
           <label for="image" class="form-label">Image Path</label>

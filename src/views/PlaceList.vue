@@ -57,13 +57,15 @@ watch(search, (updatedValue) => {
         <Spinner v-if="spinner" />
         <div class="row" v-else>
             <div class="card card-item" v-for="place in places" :key="place.id">
-            <img :src="getImageUrl(place.image_url)" class="card-img-top" alt="...">
-            <div class="card-body">
-                <p class="card-text">
-                    <strong> {{ place.title }} </strong><br/>
-                    {{ place.description.slice(0,100) }}
-                </p>
-            </div>
+            <a :href="['/travel-frontend/places/'+place.id]">
+                <img :src="getImageUrl(place.image_url)" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">
+                        <strong> {{ place.title }} </strong><br/>
+                        {{ place.description.slice(0,100) }}
+                    </p>
+                </div>
+            </a>
             </div>
         </div>
       </div><br/>
