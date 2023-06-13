@@ -54,6 +54,7 @@ async function getDayDetails() {
             <p> Arrival Time - <strong>{{ flight.arrival_time }}</strong> </p>
             <p> Depature Place - <strong>{{ flight.depature_place }}</strong> </p>
             <p> Depature Time - <strong>{{ flight.depature_time }}</strong> </p>
+            <a class="btn btn-warning btn-sm" :href="['/travel-frontend/flights/'+flight.id]" > More Info </a>
             </div>
         </div>
             <h5 v-if="dayInfo.hotels?.length != 0" class="title" > Hotels </h5>
