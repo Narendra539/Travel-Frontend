@@ -50,9 +50,9 @@ async function getDayDetails() {
             <div class="details flight">
             <p> Flight Name - <strong>{{ flight.flight_name }}</strong> </p>
             <p> Flight Number - <strong>{{ flight.flight_number }}</strong> </p>
-            <p> Arrival Place - <strong>{{ flight.arrival_place }}</strong> </p>
+            // <p> Arrival Place - <strong>{{ flight.arrival_place }}</strong> </p>
             <p> Arrival Time - <strong>{{ flight.arrival_time }}</strong> </p>
-            <p> Depature Place - <strong>{{ flight.depature_place }}</strong> </p>
+            // <p> Depature Place - <strong>{{ flight.depature_place }}</strong> </p>
             <p> Depature Time - <strong>{{ flight.depature_time }}</strong> </p>
             <a class="btn btn-warning btn-sm" :href="['/travel-frontend/flights/'+flight.id]" > More Info </a>
             </div>
