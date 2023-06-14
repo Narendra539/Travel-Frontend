@@ -67,12 +67,10 @@ async function addDay() {
         <Spinner v-if="spinner" />
         <v-card-text v-else>
           <div class="mb-3">
-          <label for="title" class="form-label">Day</label>
-          <select class="form-control form-control-lg" id="dropdown" v-model="day.day_index">
-                <option value="">select Day</option>
-                <option v-for="number in numbers" :key="number" :value="number">{{ number }}</option>
-            </select>
-        </div>
+  <label for="title" class="form-label">Day</label>
+  <input type="text" class="form-control form-control-lg" id="dayInput" v-model="day.day_index" placeholder="Enter Day">
+</div>
+
         <div class="mb-3">
           <label for="description" class="form-label">Description</label>
           <textarea class="form-control form-control-lg" id="description" rows="5" v-model="day.description"></textarea>
