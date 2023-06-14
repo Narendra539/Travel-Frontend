@@ -63,10 +63,12 @@ const closeMenu = () => {
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/travel-frontend/hotels">Hotels</a>
-        </li> -->
-        <li class="nav-item">
+        </li> 
+             <li class="nav-item">
           <a class="nav-link" href="/travel-frontend/places">Flights</a>
         </li>
+        -->
+   
         <li class="nav-item" v-if="user !== null && user?.isAdmin == 0">
           <a class="nav-link" href="/travel-frontend/bookings" v-if="user.isAdmin == 0">Bookings</a>
         </li>
