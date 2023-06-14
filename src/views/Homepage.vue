@@ -49,7 +49,7 @@ const searchPlan = () => {
         <div class="row justify-content-center">
             <div class="col-xl-6 from-to-search">
                 <div class="text-center text-white">
-                    <h2 class="mb-5 title">Life is short, and the world is wide.</h2>
+                    <h2 class="mb-5 title">Life Is Short,Travel Around The World </h2>
                     <div class="container" style="padding:10px;">
                         <div class="row">
                         <div class="col-md-6">
@@ -76,7 +76,7 @@ const searchPlan = () => {
         </div><br/>
         
     <div class="container">
-        <h2> Most Visited Places </h2>
+        <h2> TOP FEATURED PLACES </h2>
         <div class="card-group">
         <div class="card" v-for="item in mostVisitedPlaces.slice(0,3)" :key="item.id">
             <a :href="['/travel-frontend/places/'+item.id]">
@@ -91,7 +91,7 @@ const searchPlan = () => {
     </div><br/><br/>
 
        <div class="container">
-        <h2> Famous Hotels </h2>
+        <h2> LUXURIOUS HOTELS</h2>
         <div class="card-group">
         <div class="card" v-for="item in famousHotels.slice(0,3)" :key="item.id">
             <a :href="['/travel-frontend/hotels/'+item.id]">
