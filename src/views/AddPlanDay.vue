@@ -56,6 +56,16 @@ async function addDay() {
             spinner.value = false
         });
 }
+async function validateAndAddDay() {
+  if (!day.value.day_index) {
+    snackbar.value.value = true;
+    snackbar.value.color = "error";
+    snackbar.value.text = "Please enter a day.";
+    return;
+  }
+
+  await addDay();
+}
 
 </script>
 
@@ -66,9 +76,10 @@ async function addDay() {
         <v-card-title class="headline mb-2">Add Day </v-card-title>
         <Spinner v-if="spinner" />
         <v-card-text v-else>
-          <div class="mb-3">
-  <label for="title" class="form-label">Day</label>
-  <input type="text" class="form-control form-control-lg" id="dayInput" v-model="day.day_index" placeholder="Enter Day">
+    <div class="mb-3">
+      <label for="title" class="form-label">Day</label>
+      <input type="text" class="form-control form-control-lg" id="dayInput" v-model="day.day_index" placeholder="Enter Day" required>
+    </div>ype="text" class="form-control form-control-lg" id="dayInput" v-model="day.day_index" placeholder="Enter Day">
 </div>
 
         <div class="mb-3">
@@ -84,9 +95,10 @@ async function addDay() {
         </div>
         </v-card-text>
         <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn variant="flat" color="primary" @click="addDay()">Add</v-btn>
-        </v-card-actions>
+      <v-spacer></v-spacer>
+      <v-btn variant="flat" color="primary" @click="validateAndAddDay()">Add</v-btn>
+    </v-card-actions>
+  </v-card-text>
       </v-card>
       <v-snackbar v-model="snackbar.value" rounded="pill">
         {{ snackbar.text }}
