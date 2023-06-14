@@ -59,12 +59,17 @@ spinner.value = false;
 }
 
 async function validateAndAddDay() {
-if (!day.value.day_index) {
-snackbar.value.value = true;
-snackbar.value.color = "error";
-snackbar.value.text = "Please enter a day.";
-return;
-}
+  if (!day.value.day_index) {
+    snackbar.value.value = true;
+    snackbar.value.color = "error";
+    snackbar.value.text = "Please enter a day!";
+    return;
+  } else if(!day.value.itenarary_id) {
+    snackbar.value.value = true;
+    snackbar.value.color = "error";
+    snackbar.value.text = "Please select Itenarary!";
+    return;
+  }
 
 await addDay();
 }
