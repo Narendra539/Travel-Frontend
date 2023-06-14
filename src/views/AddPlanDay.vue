@@ -67,7 +67,7 @@ async function validateAndAddDay() {
   } else if(!day.value.itenarary_id) {
     snackbar.value.value = true;
     snackbar.value.color = "error";
-    snackbar.value.text = "Please select Itenarary!";
+    snackbar.value.text = "Please select the Itenarary!";
     return;
   }
 
