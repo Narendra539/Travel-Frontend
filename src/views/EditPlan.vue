@@ -15,7 +15,6 @@ const snackbar = ref({
 const plan = ref({
   title: "",
   description: "",
-  rating: "",
   image_url: "",
   place_to: "",
   start_date: "",
