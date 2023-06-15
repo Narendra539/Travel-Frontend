@@ -190,7 +190,7 @@ const addUser = () => {
 
 <style scoped>
 
-.title,.rating {
+.title {
     margin-bottom: 8px;
 }
 .container {
