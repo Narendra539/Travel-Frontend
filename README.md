@@ -1,13 +1,13 @@
 # Travel Frontend with Vue 3
 
-This application allows users to create and maintain recipes. Please visit https://github.com/OC-ComputerScience/recipe-backend for the backend repository.
+This application allows users to create and maintain Travel Itinerary application. Please visit https://github.com/Narendra539/Travel-Backend.git for the backend repository.
 
 ## Project Setup
 
-1. Clone the project into your **XAMPP/xamppfiles/htdocs/recipeapp** directory.
+1. Clone the project into your **XAMPP/xamppfiles/htdocs/itinerary** directory.
 
 ```
-git clone https://github.com/OC-ComputerScience/recipe-frontend.git
+git clone https://github.com/Narendra539/Travel-Backend.git
 ```
 
 2. Install the project.
